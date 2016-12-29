@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/newGameButton"
+        android:icon="@drawable/newgame_icon"
+        android:title="NewGame"
+        android:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/undoButton"
+        android:icon="@drawable/undo_icon"
+        android:showAsAction="always"
+        android:title="Undo"/>
+
+    <item android:id="@+id/aboutButton"
+        android:icon="@drawable/about_icon"
+        android:title="About"
+        android:showAsAction="never"/>
+
+</menu>
