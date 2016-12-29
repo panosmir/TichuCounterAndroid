@@ -1,62 +1,48 @@
 package com.newbiedev.panos.tichucounter;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView finalScoreTextView;
-    private RadioGroup scoreRadioGroup;
-    private Button playButton, roundButton;
-    Fragment _playFragment = new Fragment();
-    //Fragment _mainFragment = new Fragment();
-
+    FragmentManager fragmentManager = getFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        PlayFragment playFragment = (PlayFragment)fragmentManager.findFragmentById(R.id.play_fragment_container);
 
-        fragmentTransaction.hide(playFragment);
+        PlayFragment _playFragment = (PlayFragment) fragmentManager.findFragmentById(R.id.play_fragment_container);
+        MainFragment _mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
+
+
+        fragmentTransaction.show(_mainFragment);
+        fragmentTransaction.hide(_playFragment);
+
         fragmentTransaction.commit();
-        //playButton = (Button) findViewById(R.id.playButton);
-        roundButton = (Button)findViewById(R.id.roundButton);
 
     }
 
-    public void newGameButtonClick(View view){
-        playButton = (Button) findViewById(R.id.playButton);
-        finalScoreTextView = (TextView)findViewById(R.id.finalScoreTextView);
-        scoreRadioGroup = (RadioGroup)findViewById(R.id.scoreRadioGroup);
+    public void newGameButtonClick(View view) {
 
-        FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        PlayFragment playFragment = (PlayFragment)fragmentManager.findFragmentById(R.id.play_fragment_container);
+        PlayFragment playFragment = (PlayFragment) fragmentManager.findFragmentById(R.id.play_fragment_container);
+        MainFragment mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
 
-        fragmentTransaction.add(R.id.play_fragment_container, _playFragment, "PLAY_FRAGMENT");
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.show(playFragment);
+        fragmentTransaction.hide(mainFragment);
         fragmentTransaction.commit();
 
-        playButton.setVisibility(View.INVISIBLE);
-        roundButton.setVisibility(View.VISIBLE);
-        finalScoreTextView.setVisibility(View.INVISIBLE);
-        scoreRadioGroup.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -68,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.newGameButton:
                 //something
                 return true;

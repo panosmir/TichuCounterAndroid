@@ -77,41 +77,13 @@
         android:layout_centerInParent="true"
         android:id="@+id/resetNamesButton"/>
 
-    <TextView
-        android:id="@+id/finalScoreTextView"
+    <fragment
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="50dp"
         android:layout_below="@id/resetNamesButton"
-        android:text="Choose your final score"
-        android:textSize="24dp" />
-
-    <RadioGroup
-        android:id="@+id/scoreRadioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/finalScoreTextView"
-        android:layout_marginLeft="15dp"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="30dp"
-            android:text="500"
-            android:textSize="18dp" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="120dp"
-            android:text="1000"
-            android:textSize="18dp" />
-    </RadioGroup>
+        android:layout_marginTop="50dp"
+        android:id="@+id/main_fragment_container"
+        android:name="com.newbiedev.panos.tichucounter.MainFragment"/>
 
     <fragment
         android:layout_width="wrap_content"
@@ -121,30 +93,5 @@
         android:id="@+id/play_fragment_container"
         android:name="com.newbiedev.panos.tichucounter.PlayFragment"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/playButton"
-        android:text="New Game"
-        android:textSize="24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="50dp"
-        android:gravity="center_horizontal"
-        android:onClick="newGameButtonClick"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/roundButton"
-        android:text="Play"
-        android:textSize="24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="50dp"
-        android:gravity="center_horizontal"
-        android:visibility="invisible"
-        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
