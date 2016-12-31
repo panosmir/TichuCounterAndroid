@@ -10,4 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.newbiedev.panos.tichucounter.AboutActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/aboutTextView"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="about page"
+        android:textSize="50sp"/>
+
 </RelativeLayout>

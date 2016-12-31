@@ -2,6 +2,7 @@ package com.newbiedev.panos.tichucounter;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -11,6 +12,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Initiate FragmentManager. It's responsible for fragment initiation.
     FragmentManager fragmentManager = getFragmentManager();
 
     @Override
@@ -18,27 +20,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //FragmentTransaction allow us to call methods for fragments.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        //Init our two fragments. The PlayFragment which contains the Checkboxes etc.
+        //And the MainFragment that it's for the main screen of the app.
         PlayFragment _playFragment = (PlayFragment) fragmentManager.findFragmentById(R.id.play_fragment_container);
         MainFragment _mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
 
-
+        //OnCreate we want to show the MainFragment and hide the PlayFragment.
         fragmentTransaction.show(_mainFragment);
         fragmentTransaction.hide(_playFragment);
 
+        //Committing our changes.
         fragmentTransaction.commit();
 
     }
 
     public void newGameButtonClick(View view) {
 
+        /*Every time we want to make a FragmentTransaction in different methods
+        we must initiate a new FragmentTransaction and and beginTransaction of FragmentManager that
+        we already initiate.*/
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         PlayFragment playFragment = (PlayFragment) fragmentManager.findFragmentById(R.id.play_fragment_container);
         MainFragment mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
 
+        //addToBackStack let us go back if we press the back button.
+        //NULL because we don't have/need any parameter we going back.
         fragmentTransaction.addToBackStack(null);
+
         fragmentTransaction.show(playFragment);
         fragmentTransaction.hide(mainFragment);
         fragmentTransaction.commit();
@@ -62,7 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 //something
                 return true;
             case R.id.aboutButton:
-                //something
+                //Init an Intent and connect it with AboutActivity
+                Intent intent = new Intent(this, AboutActivity.class);
+                //Start the Activity and then it'll get it from AboutActivity.java
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

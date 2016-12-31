@@ -82,6 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/resetNamesButton"
         android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:id="@+id/main_fragment_container"
         android:name="com.newbiedev.panos.tichucounter.MainFragment"/>
 
@@ -90,6 +92,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/resetNamesButton"
         android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:id="@+id/play_fragment_container"
         android:name="com.newbiedev.panos.tichucounter.PlayFragment"/>
 
