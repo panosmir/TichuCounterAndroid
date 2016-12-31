@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/playButton"
-            android:text="New Game"
+            android:text="@string/newGameButtonText"
             android:textSize="24sp"
             android:layout_marginLeft="35dp"
             android:layout_marginStart="35dp"

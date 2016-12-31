@@ -20,19 +20,23 @@
 
     <TextView
         android:id="@+id/TextViewTeamA"
-        android:text="Team A"
-        android:textSize="24dp"
+        android:text="@string/teamA"
+        android:textSize="24sp"
         android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/changeNameAButton"
         android:layout_toRightOf="@id/changeNameAButton"/>
 
     <EditText
         android:id="@+id/editTextTeamA"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/editTextTeamA"
         android:layout_toLeftOf="@id/editTextTeamA"
         android:visibility="invisible"/>
 
@@ -40,17 +44,20 @@
         android:id="@+id/changeNameBButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_icon"/>
 
     <TextView
         android:id="@+id/TextViewTeamB"
-        android:text="Team B"
-        android:textSize="24dp"
+        android:text="@string/teamB"
+        android:textSize="24sp"
+        android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/changeNameBButton"
         android:layout_toLeftOf="@id/changeNameBButton"/>
 
     <EditText
@@ -58,6 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/changeNameBButton"
+        android:layout_toStartOf="@id/changeNameBButton"
         android:visibility="invisible"/>
 
     <ImageButton
