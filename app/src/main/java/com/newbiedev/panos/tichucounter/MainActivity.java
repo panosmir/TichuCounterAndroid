@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +58,46 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.hide(mainFragment);
         fragmentTransaction.commit();
 
+    }
+
+    public void playButtonClick(View view){
+
+    }
+
+    public void changeTeamANameButton(View view){
+        /*Change the visibility of the components to be right*/
+
+        TextView _teamATextView = (TextView)findViewById(R.id.TextViewTeamA);
+        _teamATextView.setVisibility(View.INVISIBLE);
+
+        EditText _teamAEditText = (EditText)findViewById(R.id.editTextTeamA);
+        _teamAEditText.setVisibility(View.VISIBLE);
+
+        ImageButton _resetNameButton = (ImageButton)findViewById(R.id.resetNamesButton);
+        _resetNameButton.setVisibility(View.INVISIBLE);
+
+        ImageButton _saveNamesButton = (ImageButton)findViewById(R.id.saveNameButton);
+        _saveNamesButton.setVisibility(View.VISIBLE);
+    }
+
+    public void saveNamesButtonClick(View view){
+        //init the xml components
+        TextView _teamATextView = (TextView)findViewById(R.id.TextViewTeamA);
+        //set the visibility to be visible
+        _teamATextView.setVisibility(View.VISIBLE);
+
+        EditText _teamAEditText = (EditText)findViewById(R.id.editTextTeamA);
+        _teamAEditText.setVisibility(View.INVISIBLE);
+
+        //Change the TeamATextView text with whatever the teamAEditText contains
+        _teamATextView.setText(_teamAEditText.getText());
+
+        //And then make the buttons invisible and visible
+        ImageButton _resetNameButton = (ImageButton)findViewById(R.id.resetNamesButton);
+        _resetNameButton.setVisibility(View.VISIBLE);
+
+        ImageButton _saveNamesButton = (ImageButton)findViewById(R.id.saveNameButton);
+        _saveNamesButton.setVisibility(View.INVISIBLE);
     }
 
     @Override

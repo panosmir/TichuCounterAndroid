@@ -16,6 +16,7 @@
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="changeTeamANameButton"
         android:background="@drawable/edit_icon"/>
 
     <TextView
@@ -32,12 +33,13 @@
     <EditText
         android:id="@+id/editTextTeamA"
         android:textSize="24sp"
+        android:hint="Team A"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/editTextTeamA"
-        android:layout_toLeftOf="@id/editTextTeamA"
+        android:layout_toEndOf="@id/changeNameAButton"
+        android:layout_toRightOf="@id/changeNameAButton"
         android:visibility="invisible"/>
 
     <ImageButton
@@ -64,6 +66,7 @@
         android:id="@+id/editTextTeamB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="Team B"
         android:layout_toLeftOf="@id/changeNameBButton"
         android:layout_toStartOf="@id/changeNameBButton"
         android:visibility="invisible"/>
@@ -75,6 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/savebutton_icon"
+        android:onClick="saveNamesButtonClick"
         android:visibility="invisible"/>
 
     <ImageButton

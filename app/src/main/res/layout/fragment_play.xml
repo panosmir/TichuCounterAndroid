@@ -32,6 +32,27 @@
 
         </ListView>
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scoreAEditText"
+            android:layout_below="@id/ScoreListA"
+            android:inputType="numberPassword"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:hint="Score"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ScoreListB"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:inputType="numberPassword"
+            android:layout_toEndOf="@id/scoreAEditText"
+            android:layout_toRightOf="@id/scoreAEditText"
+            android:hint="Score"/>
+
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,6 +125,7 @@
             android:id="@+id/roundButton"
             android:text="@string/playButtonText"
             android:textSize="24sp"
+            android:onClick="playButtonClick"
             android:layout_below="@id/teamARadioGroup"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
