@@ -49,6 +49,7 @@
         android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="changeTeamBNameButton"
         android:background="@drawable/edit_icon"/>
 
     <TextView
@@ -67,6 +68,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Team B"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="24sp"
         android:layout_toLeftOf="@id/changeNameBButton"
         android:layout_toStartOf="@id/changeNameBButton"
         android:visibility="invisible"/>
@@ -87,6 +91,7 @@
         android:background="@drawable/refresh_icon"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
+        android:onClick="resetNamesButton"
         android:id="@+id/resetNamesButton"/>
 
     <fragment

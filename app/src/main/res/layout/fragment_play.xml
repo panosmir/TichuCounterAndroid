@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.newbiedev.panos.tichucounter.PlayFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -37,18 +36,19 @@
             android:layout_height="wrap_content"
             android:id="@+id/scoreAEditText"
             android:layout_below="@id/ScoreListA"
-            android:inputType="numberPassword"
+            android:inputType="number"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
             android:hint="Score"/>
 
         <EditText
+            android:id="@+id/scoreBEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ScoreListB"
             android:layout_marginStart="120dp"
             android:layout_marginLeft="120dp"
-            android:inputType="numberPassword"
+            android:inputType="number"
             android:layout_toEndOf="@id/scoreAEditText"
             android:layout_toRightOf="@id/scoreAEditText"
             android:hint="Score"/>
@@ -65,22 +65,27 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tichuMadeA"
                 android:text="Tichu Made"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tichuLostA"
                 android:text="Tichu Lost"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/oneTwoA"
                 android:text="1-2"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/gTichuMadeA"
                 android:text="Grand Tichu Made"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/gTichuLostA"
                 android:text="Grand Tichu Lost"/>
 
         </RadioGroup>
@@ -98,22 +103,27 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tichuMadeB"
                 android:text="Tichu Made"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tichuLostB"
                 android:text="Tichu Lost"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/oneTwoB"
                 android:text="1-2"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/gTichuMadeB"
                 android:text="Grand Tichu Made"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/gTichuLostB"
                 android:text="Grand Tichu Lost"/>
 
         </RadioGroup>
