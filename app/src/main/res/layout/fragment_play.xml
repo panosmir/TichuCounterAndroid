@@ -60,6 +60,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
+            android:onClick="checked"
             android:id="@+id/teamARadioGroup">
 
             <RadioButton
@@ -98,6 +99,7 @@
             android:layout_toRightOf="@id/teamARadioGroup"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="40dp"
+            android:onClick="checked"
             android:id="@+id/teamBRadioGroup">
 
             <RadioButton

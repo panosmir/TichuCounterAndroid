@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<Integer> adapterA, adapterB;
     int tempA = 0, tempB = 0;
     String resultA, resultB;
+    private boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,6 +156,13 @@ public class MainActivity extends AppCompatActivity {
 //        RadioButton gTichuLostB = (RadioButton)findViewById(R.id.gTichuLostB);
 //    }
 
+    public void checked(View view){
+        if(!check)
+            check = true;
+        else
+            check = false;
+    }
+
     private void ClearFields(){
 
         EditText scoreA = (EditText) findViewById(R.id.scoreAEditText);
@@ -179,11 +187,11 @@ public class MainActivity extends AppCompatActivity {
         scoreA.setText("");
         scoreB.setText("");
 
-//        RadioGroup teamARadioGroup = (RadioGroup)findViewById(R.id.teamARadioGroup);
-//        RadioGroup teamBRadioGroup = (RadioGroup)findViewById(R.id.teamBRadioGroup);
+        RadioGroup teamARadioGroup = (RadioGroup)findViewById(R.id.teamARadioGroup);
+        RadioGroup teamBRadioGroup = (RadioGroup)findViewById(R.id.teamBRadioGroup);
 //
-//        teamARadioGroup.clearCheck();
-//        teamBRadioGroup.clearCheck();
+        teamARadioGroup.clearCheck();
+        teamBRadioGroup.clearCheck();
 
         oneTwoA.setChecked(false);
         oneTwoB.setChecked(false);
