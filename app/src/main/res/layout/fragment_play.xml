@@ -9,15 +9,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp">
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:id="@+id/totalScoreA"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50sp"
+            android:layout_marginStart="50sp"/>
 
         <ListView
             android:layout_width="150dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@id/totalScoreA"
             android:layout_height="150dp"
             android:id="@+id/ScoreListA">
 
         </ListView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalScoreB"
+            android:textStyle="bold"
+            android:layout_marginLeft="170sp"
+            android:layout_marginStart="170sp"
+            android:layout_toRightOf="@id/totalScoreA"
+            android:layout_toEndOf="@id/totalScoreA"
+            android:layout_alignParentTop="true"/>
 
         <ListView
             android:layout_width="150dp"
@@ -25,7 +46,7 @@
             android:id="@+id/ScoreListB"
             android:layout_marginLeft="50dp"
             android:layout_marginStart="50dp"
-            android:layout_alignParentTop="true"
+            android:layout_below="@id/totalScoreB"
             android:layout_toRightOf="@+id/ScoreListA"
             android:layout_toEndOf="@+id/ScoreListA">
 
@@ -36,7 +57,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/scoreAEditText"
             android:layout_below="@id/ScoreListA"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
             android:hint="Score"/>
@@ -48,66 +69,69 @@
             android:layout_below="@id/ScoreListB"
             android:layout_marginStart="120dp"
             android:layout_marginLeft="120dp"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:layout_toEndOf="@id/scoreAEditText"
             android:layout_toRightOf="@id/scoreAEditText"
             android:hint="Score"/>
 
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ScoreListA"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:onClick="checked"
-            android:id="@+id/teamARadioGroup">
-
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tichuMadeA"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_below="@id/ScoreListA"
                 android:text="Tichu Made"/>
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tichuLostA"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_below="@id/tichuMadeA"
                 android:text="Tichu Lost"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/oneTwoA"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_below="@id/tichuLostA"
                 android:text="1-2"/>
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gTichuMadeA"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_below="@id/oneTwoA"
                 android:text="Grand Tichu Made"/>
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gTichuLostA"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_below="@id/gTichuMadeA"
                 android:text="Grand Tichu Lost"/>
-
-        </RadioGroup>
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ScoreListB"
-            android:layout_toEndOf="@id/teamARadioGroup"
-            android:layout_toRightOf="@id/teamARadioGroup"
+            android:layout_toEndOf="@id/tichuMadeA"
+            android:layout_toRightOf="@id/tichuMadeA"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="40dp"
-            android:onClick="checked"
             android:id="@+id/teamBRadioGroup">
 
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tichuMadeB"
                 android:text="Tichu Made"/>
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tichuLostB"
@@ -117,12 +141,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/oneTwoB"
                 android:text="1-2"/>
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gTichuMadeB"
                 android:text="Grand Tichu Made"/>
-            <RadioButton
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gTichuLostB"
@@ -138,7 +162,7 @@
             android:text="@string/playButtonText"
             android:textSize="24sp"
             android:onClick="playButtonClick"
-            android:layout_below="@id/teamARadioGroup"
+            android:layout_below="@id/teamBRadioGroup"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
 
