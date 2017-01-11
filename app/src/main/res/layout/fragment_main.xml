@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/AppTheme"
+    android:background="@drawable/background"
     tools:context="com.newbiedev.panos.tichucounter.MainFragment">
 
 
@@ -51,19 +52,39 @@
                 android:textSize="18sp" />
         </RadioGroup>
 
+        <!--<com.dx.dxloadingbutton.lib.LoadingButton xmlns:app="http://schemas.android.com/apk/res-auto"-->
+            <!--app:lb_btnText="@string/newGameButtonText"-->
+            <!--app:lb_btnColor="@color/gray"-->
+            <!--app:lb_btnRippleColor="@color/black"-->
+            <!--app:lb_textColor="@color/black"-->
+            <!--app:lb_resetAfterFailed="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/playButton"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:layout_marginLeft="35dp"-->
+            <!--android:layout_marginStart="35dp"-->
+            <!--android:layout_below="@id/finalScoreTextView"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="50dp"-->
+            <!--android:onClick="newGameButtonClick" />-->
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/playButton"
+            android:textAllCaps="false"
             android:text="@string/newGameButtonText"
             android:textSize="24sp"
+            android:drawableLeft="@drawable/create_new"
             android:layout_marginLeft="35dp"
             android:layout_marginStart="35dp"
             android:layout_below="@id/finalScoreTextView"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:onClick="newGameButtonClick"/>
+            android:onClick="newGameButtonClick" />
 
     </RelativeLayout>
 

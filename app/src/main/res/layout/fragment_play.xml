@@ -1,15 +1,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sb="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context="com.newbiedev.panos.tichucounter.PlayFragment">
 
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_gravity="center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -17,14 +18,14 @@
             android:layout_alignParentTop="true"
             android:id="@+id/totalScoreA"
             android:textStyle="bold"
-            android:layout_centerVertical="true"
+            android:textSize="24sp"
             android:layout_marginLeft="50sp"
             android:layout_marginStart="50sp"/>
 
         <ListView
             android:layout_width="150dp"
             android:layout_below="@id/totalScoreA"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:id="@+id/ScoreListA">
 
         </ListView>
@@ -34,6 +35,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/totalScoreB"
             android:textStyle="bold"
+            android:textSize="24sp"
             android:layout_marginLeft="170sp"
             android:layout_marginStart="170sp"
             android:layout_toRightOf="@id/totalScoreA"
@@ -42,7 +44,7 @@
 
         <ListView
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:id="@+id/ScoreListB"
             android:layout_marginLeft="50dp"
             android:layout_marginStart="50dp"
@@ -67,63 +69,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ScoreListB"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
             android:inputType="numberSigned"
             android:layout_toEndOf="@id/scoreAEditText"
             android:layout_toRightOf="@id/scoreAEditText"
             android:hint="Score"/>
 
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ScoreListA"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:id="@+id/teamARadioGroup">
+
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tichuMadeA"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
                 android:layout_below="@id/ScoreListA"
                 android:text="Tichu Made"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tichuLostA"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
                 android:layout_below="@id/tichuMadeA"
                 android:text="Tichu Lost"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/oneTwoA"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
                 android:layout_below="@id/tichuLostA"
                 android:text="1-2"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gTichuMadeA"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
                 android:layout_below="@id/oneTwoA"
                 android:text="Grand Tichu Made"/>
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/gTichuLostA"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
                 android:layout_below="@id/gTichuMadeA"
                 android:text="Grand Tichu Lost"/>
+        </RadioGroup>
 
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ScoreListB"
-            android:layout_toEndOf="@id/tichuMadeA"
-            android:layout_toRightOf="@id/tichuMadeA"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="40dp"
+            android:layout_toEndOf="@id/teamARadioGroup"
+            android:layout_toRightOf="@id/teamARadioGroup"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:id="@+id/teamBRadioGroup">
 
             <CheckBox
@@ -155,16 +157,20 @@
         </RadioGroup>
 
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.spark.submitbutton.SubmitButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/roundButton"
             android:text="@string/playButtonText"
-            android:textSize="24sp"
+            android:textColor="#F00"
             android:onClick="playButtonClick"
             android:layout_below="@id/teamBRadioGroup"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            sb:sub_btn_background="@color/black"
+            sb:sub_btn_line_color="#F00"
+            sb:sub_btn_ripple_color="#F00"
+            sb:sub_btn_duration="1000"
+            sb:sub_btn_tick_color="@color/white"/>
 
     </RelativeLayout>
 
