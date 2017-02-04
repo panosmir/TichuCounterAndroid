@@ -28,11 +28,47 @@ public class MainActivity extends AppCompatActivity {
 
     //Initiate FragmentManager. It's responsible for fragment initiation.
     FragmentManager fragmentManager = getFragmentManager();
+    PlayFragment _playFragment = (PlayFragment) fragmentManager.findFragmentById(R.id.play_fragment_container);
+    MainFragment _mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
+
     private int counterA, counterB;
+    private int tempA = 0, tempB = 0;
+
     List<Integer> scoreTeamA = new ArrayList<Integer>();
     List<Integer> scoreTeamB = new ArrayList<Integer>();
     ArrayAdapter<Integer> adapterA, adapterB;
-    private int tempA = 0, tempB = 0;
+
+    ListView scoreListA = (ListView) findViewById(R.id.ScoreListA);
+    ListView scoreListB = (ListView) findViewById(R.id.ScoreListB);
+
+    CheckBox tichuMadeA = (CheckBox) findViewById(R.id.tichuMadeA);
+    CheckBox tichuMadeB = (CheckBox) findViewById(R.id.tichuMadeB);
+    CheckBox gTichuMadeA = (CheckBox) findViewById(R.id.gTichuMadeA);
+    CheckBox gTichuMadeB = (CheckBox) findViewById(R.id.gTichuMadeB);
+    CheckBox tichuLostA = (CheckBox) findViewById(R.id.tichuLostA);
+    CheckBox gTichuLostA = (CheckBox) findViewById(R.id.gTichuLostA);
+    CheckBox tichuLostB = (CheckBox) findViewById(R.id.tichuLostB);
+    CheckBox gTichuLostB = (CheckBox) findViewById(R.id.gTichuLostB);
+    CheckBox oneTwoA = (CheckBox) findViewById(R.id.oneTwoA);
+    CheckBox oneTwoB = (CheckBox) findViewById(R.id.oneTwoB);
+
+    EditText scoreA = (EditText) findViewById(R.id.scoreAEditText);
+    EditText scoreB = (EditText) findViewById(R.id.scoreBEditText);
+
+    RadioButton smallGame = (RadioButton) findViewById(R.id.smallGame);
+    RadioButton normalGame = (RadioButton) findViewById(R.id.normalGame);
+
+    TextView totalScoreA = (TextView) findViewById(R.id.totalScoreA);
+    TextView totalScoreB = (TextView) findViewById(R.id.totalScoreB);
+    TextView nameTeamA = (TextView) findViewById(R.id.TextViewTeamA);
+    TextView nameTeamB = (TextView) findViewById(R.id.TextViewTeamB);
+
+    EditText _teamAEditText = (EditText) findViewById(R.id.editTextTeamA);
+    EditText _teamBEditText = (EditText) findViewById(R.id.editTextTeamB);
+
+    ImageButton _resetNameButton = (ImageButton) findViewById(R.id.resetNamesButton);
+    ImageButton _saveNamesButton = (ImageButton) findViewById(R.id.saveNameButton);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Init our two fragments. The PlayFragment which contains the Checkboxes etc.
         //And the MainFragment that it's for the main screen of the app.
-        PlayFragment _playFragment = (PlayFragment) fragmentManager.findFragmentById(R.id.play_fragment_container);
-        MainFragment _mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
+
 
         //OnCreate we want to show the MainFragment and hide the PlayFragment.
         fragmentTransaction.show(_mainFragment);
@@ -55,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
         //Committing our changes.
         fragmentTransaction.commit();
 
-        ListView scoreListA = (ListView) findViewById(R.id.ScoreListA);
-        ListView scoreListB = (ListView) findViewById(R.id.ScoreListB);
 
         adapterA = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, scoreTeamA);
         adapterB = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, scoreTeamB);
@@ -74,8 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Init our two fragments. The PlayFragment which contains the Checkboxes etc.
         //And the MainFragment that it's for the main screen of the app.
-        PlayFragment _playFragment = (PlayFragment) fragmentManager.findFragmentById(R.id.play_fragment_container);
-        MainFragment _mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
+
 
         //OnCreate we want to show the MainFragment and hide the PlayFragment.
         fragmentTransaction.show(_mainFragment);
@@ -86,16 +118,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deseselectCheckBoxes() {
-        final CheckBox tichuMadeA = (CheckBox) findViewById(R.id.tichuMadeA);
-        final CheckBox tichuMadeB = (CheckBox) findViewById(R.id.tichuMadeB);
-        final CheckBox gTichuMadeA = (CheckBox) findViewById(R.id.gTichuMadeA);
-        final CheckBox gTichuMadeB = (CheckBox) findViewById(R.id.gTichuMadeB);
-        final CheckBox tichuLostA = (CheckBox) findViewById(R.id.tichuLostA);
-        final CheckBox gTichuLostA = (CheckBox) findViewById(R.id.gTichuLostA);
-        final CheckBox tichuLostB = (CheckBox) findViewById(R.id.tichuLostB);
-        final CheckBox gTichuLostB = (CheckBox) findViewById(R.id.gTichuLostB);
-        final CheckBox oneTwoA = (CheckBox) findViewById(R.id.oneTwoA);
-        final CheckBox oneTwoB = (CheckBox) findViewById(R.id.oneTwoB);
 
 
         tichuMadeA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -193,30 +215,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void playButtonClick(View view) {
 
-        EditText scoreA = (EditText) findViewById(R.id.scoreAEditText);
-        EditText scoreB = (EditText) findViewById(R.id.scoreBEditText);
-
-        CheckBox oneTwoA = (CheckBox) findViewById(R.id.oneTwoA);
-        CheckBox oneTwoB = (CheckBox) findViewById(R.id.oneTwoB);
-
-        CheckBox tichuMadeA = (CheckBox) findViewById(R.id.tichuMadeA);
-        CheckBox tichuLostA = (CheckBox) findViewById(R.id.tichuLostA);
-        CheckBox gTichuMadeA = (CheckBox) findViewById(R.id.gTichuMadeA);
-        CheckBox gTichuLostA = (CheckBox) findViewById(R.id.gTichuLostA);
-
-        CheckBox tichuMadeB = (CheckBox) findViewById(R.id.tichuMadeB);
-        CheckBox tichuLostB = (CheckBox) findViewById(R.id.tichuLostB);
-        CheckBox gTichuMadeB = (CheckBox) findViewById(R.id.gTichuMadeB);
-        CheckBox gTichuLostB = (CheckBox) findViewById(R.id.gTichuLostB);
-
-        RadioButton smallGame = (RadioButton) findViewById(R.id.smallGame);
-        RadioButton normalGame = (RadioButton) findViewById(R.id.normalGame);
-
-        final TextView totalScoreA = (TextView) findViewById(R.id.totalScoreA);
-        final TextView totalScoreB = (TextView) findViewById(R.id.totalScoreB);
-        TextView nameTeamA = (TextView) findViewById(R.id.TextViewTeamA);
-        TextView nameTeamB = (TextView) findViewById(R.id.TextViewTeamB);
-
         if (scoreA.getText().toString().isEmpty() && scoreB.getText().toString().isEmpty()) {
             if (oneTwoA.isChecked() && !oneTwoB.isChecked()) {
                 tempA = 200;
@@ -259,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
                 scoreTeamA.add(0, tempA);
                 scoreTeamB.add(0, tempB);
             }
-        } else if (scoreB.getText().toString().isEmpty() || scoreB.getText().equals("")) {
+        } else if (scoreB.getText().toString().isEmpty()) {
             int sA = Integer.parseInt(scoreA.getText().toString());
             if (sA % 5 == 0 && sA <= 125 && sA >= -25) {
                 tempA = sA;
@@ -300,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
                 scoreTeamA.add(0, tempA);
                 scoreTeamB.add(0, tempB);
             }
-        } else if (scoreA.getText().toString().isEmpty() || scoreA.getText().equals("")) {
+        } else if (scoreA.getText().toString().isEmpty()) {
             int sB = Integer.parseInt(scoreB.getText().toString());
             if (sB % 5 == 0 && sB <= 125 && sB >= -25) {
                 tempB = sB;
@@ -495,23 +493,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void ClearFields() {
-
-        EditText scoreA = (EditText) findViewById(R.id.scoreAEditText);
-        EditText scoreB = (EditText) findViewById(R.id.scoreBEditText);
-
-        CheckBox oneTwoA = (CheckBox) findViewById(R.id.oneTwoA);
-        CheckBox oneTwoB = (CheckBox) findViewById(R.id.oneTwoB);
-
-        CheckBox tichuMadeA = (CheckBox) findViewById(R.id.tichuMadeA);
-        CheckBox tichuLostA = (CheckBox) findViewById(R.id.tichuLostA);
-        CheckBox gTichuMadeA = (CheckBox) findViewById(R.id.gTichuMadeA);
-        CheckBox gTichuLostA = (CheckBox) findViewById(R.id.gTichuLostA);
-
-        CheckBox tichuMadeB = (CheckBox) findViewById(R.id.tichuMadeB);
-        CheckBox tichuLostB = (CheckBox) findViewById(R.id.tichuLostB);
-        CheckBox gTichuMadeB = (CheckBox) findViewById(R.id.gTichuMadeB);
-        CheckBox gTichuLostB = (CheckBox) findViewById(R.id.gTichuLostB);
-
         tempA = 0;
         tempB = 0;
 
@@ -533,9 +514,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newGameButtonClick(View view) {
-
-        RadioButton smallGame = (RadioButton) findViewById(R.id.smallGame);
-        RadioButton normalGame = (RadioButton) findViewById(R.id.normalGame);
 
         if (smallGame.isChecked() || normalGame.isChecked()) {
 
@@ -561,48 +539,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeTeamANameButton(View view) {
         /*Change the visibility of the components to be right*/
-
-        TextView _teamATextView = (TextView) findViewById(R.id.TextViewTeamA);
-        _teamATextView.setVisibility(View.INVISIBLE);
-
-        EditText _teamAEditText = (EditText) findViewById(R.id.editTextTeamA);
+        nameTeamA.setVisibility(View.INVISIBLE);
         _teamAEditText.setVisibility(View.VISIBLE);
-
-        ImageButton _resetNameButton = (ImageButton) findViewById(R.id.resetNamesButton);
         _resetNameButton.setVisibility(View.INVISIBLE);
-
-        ImageButton _saveNamesButton = (ImageButton) findViewById(R.id.saveNameButton);
         _saveNamesButton.setVisibility(View.VISIBLE);
     }
 
     public void changeTeamBNameButton(View view) {
-
-        TextView _teamBTextView = (TextView) findViewById(R.id.TextViewTeamB);
-        _teamBTextView.setVisibility(View.INVISIBLE);
-
-        EditText _teamBEditText = (EditText) findViewById(R.id.editTextTeamB);
+        nameTeamB.setVisibility(View.INVISIBLE);
         _teamBEditText.setVisibility(View.VISIBLE);
-
-        ImageButton _resetNameButton = (ImageButton) findViewById(R.id.resetNamesButton);
         _resetNameButton.setVisibility(View.INVISIBLE);
-
-        ImageButton _saveNamesButton = (ImageButton) findViewById(R.id.saveNameButton);
         _saveNamesButton.setVisibility(View.VISIBLE);
     }
 
     public void saveNamesButtonClick(View view) {
-        //init the xml components
-        TextView _teamATextView = (TextView) findViewById(R.id.TextViewTeamA);
         //set the visibility to be visible
-        _teamATextView.setVisibility(View.VISIBLE);
-
-        EditText _teamAEditText = (EditText) findViewById(R.id.editTextTeamA);
+        nameTeamA.setVisibility(View.VISIBLE);
         _teamAEditText.setVisibility(View.INVISIBLE);
-
-        TextView _teamBTextView = (TextView) findViewById(R.id.TextViewTeamB);
-        _teamBTextView.setVisibility(View.VISIBLE);
-
-        EditText _teamBEditText = (EditText) findViewById(R.id.editTextTeamB);
+        nameTeamB.setVisibility(View.VISIBLE);
         _teamBEditText.setVisibility(View.INVISIBLE);
 
         //Change the TeamATextView text with whatever the teamAEditText contains
@@ -610,21 +564,18 @@ public class MainActivity extends AppCompatActivity {
         //_teamBTextView.setText(_teamBEditText.getText());
 
         if (_teamAEditText.getText().toString().isEmpty()) {
-            _teamATextView.setText("Team A");
+            nameTeamA.setText("Team A");
         } else
-            _teamATextView.setText(_teamAEditText.getText());
+            nameTeamA.setText(_teamAEditText.getText());
 
         if (_teamBEditText.getText().toString().isEmpty()) {
-            _teamBTextView.setText("Team B");
+            nameTeamB.setText("Team B");
         } else {
-            _teamBTextView.setText(_teamBEditText.getText());
+            nameTeamB.setText(_teamBEditText.getText());
         }
 
         //And then make the buttons invisible and visible
-        ImageButton _resetNameButton = (ImageButton) findViewById(R.id.resetNamesButton);
         _resetNameButton.setVisibility(View.VISIBLE);
-
-        ImageButton _saveNamesButton = (ImageButton) findViewById(R.id.saveNameButton);
         _saveNamesButton.setVisibility(View.INVISIBLE);
     }
 
@@ -654,9 +605,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void newGamePreparation() {
-        TextView totalScoreA = (TextView) findViewById(R.id.totalScoreA);
-        TextView totalScoreB = (TextView) findViewById(R.id.totalScoreB);
-
         ClearFields();
         scoreTeamA.clear();
         scoreTeamB.clear();
@@ -667,8 +615,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void undoButtonClick() {
-        TextView totalScoreA = (TextView) findViewById(R.id.totalScoreA);
-        TextView totalScoreB = (TextView) findViewById(R.id.totalScoreB);
 
         if (scoreTeamA.isEmpty() || scoreTeamB.isEmpty()) {
             AlertDialog builder = new AlertDialog.Builder(MainActivity.this).create();
