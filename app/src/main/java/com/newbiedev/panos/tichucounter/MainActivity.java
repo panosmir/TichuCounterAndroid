@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Initiate FragmentManager. It's responsible for fragment initiation.
     FragmentManager fragmentManager = getFragmentManager();
-    PlayFragment _playFragment = (PlayFragment) fragmentManager.findFragmentById(R.id.play_fragment_container);
-    MainFragment _mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
+    PlayFragment playFragment;
+    MainFragment mainFragment;
 
     private int counterA, counterB;
     private int tempA = 0, tempB = 0;
@@ -38,43 +38,90 @@ public class MainActivity extends AppCompatActivity {
     List<Integer> scoreTeamB = new ArrayList<Integer>();
     ArrayAdapter<Integer> adapterA, adapterB;
 
-    ListView scoreListA = (ListView) findViewById(R.id.ScoreListA);
-    ListView scoreListB = (ListView) findViewById(R.id.ScoreListB);
+    ListView scoreListA;
+    ListView scoreListB;
 
-    CheckBox tichuMadeA = (CheckBox) findViewById(R.id.tichuMadeA);
-    CheckBox tichuMadeB = (CheckBox) findViewById(R.id.tichuMadeB);
-    CheckBox gTichuMadeA = (CheckBox) findViewById(R.id.gTichuMadeA);
-    CheckBox gTichuMadeB = (CheckBox) findViewById(R.id.gTichuMadeB);
-    CheckBox tichuLostA = (CheckBox) findViewById(R.id.tichuLostA);
-    CheckBox gTichuLostA = (CheckBox) findViewById(R.id.gTichuLostA);
-    CheckBox tichuLostB = (CheckBox) findViewById(R.id.tichuLostB);
-    CheckBox gTichuLostB = (CheckBox) findViewById(R.id.gTichuLostB);
-    CheckBox oneTwoA = (CheckBox) findViewById(R.id.oneTwoA);
-    CheckBox oneTwoB = (CheckBox) findViewById(R.id.oneTwoB);
+    CheckBox tichuMadeA;
+    CheckBox tichuMadeB;
+    CheckBox gTichuMadeA;
+    CheckBox gTichuMadeB;
+    CheckBox tichuLostA;
+    CheckBox gTichuLostA;
+    CheckBox tichuLostB;
+    CheckBox gTichuLostB;
+    CheckBox oneTwoA;
+    CheckBox oneTwoB;
 
-    EditText scoreA = (EditText) findViewById(R.id.scoreAEditText);
-    EditText scoreB = (EditText) findViewById(R.id.scoreBEditText);
+    EditText scoreA;
+    EditText scoreB;
 
-    RadioButton smallGame = (RadioButton) findViewById(R.id.smallGame);
-    RadioButton normalGame = (RadioButton) findViewById(R.id.normalGame);
+    RadioButton smallGame;
+    RadioButton normalGame;
 
-    TextView totalScoreA = (TextView) findViewById(R.id.totalScoreA);
-    TextView totalScoreB = (TextView) findViewById(R.id.totalScoreB);
-    TextView nameTeamA = (TextView) findViewById(R.id.TextViewTeamA);
-    TextView nameTeamB = (TextView) findViewById(R.id.TextViewTeamB);
+    TextView totalScoreA;
+    TextView totalScoreB;
+    TextView nameTeamA;
+    TextView nameTeamB;
 
-    EditText _teamAEditText = (EditText) findViewById(R.id.editTextTeamA);
-    EditText _teamBEditText = (EditText) findViewById(R.id.editTextTeamB);
+    EditText teamAEditText;
+    EditText teamBEditText;
 
-    ImageButton _resetNameButton = (ImageButton) findViewById(R.id.resetNamesButton);
-    ImageButton _saveNamesButton = (ImageButton) findViewById(R.id.saveNameButton);
-
+    ImageButton resetNameButton;
+    ImageButton saveNamesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //init components
+        playFragment = (PlayFragment)fragmentManager.findFragmentById(R.id.play_fragment_container);
+        mainFragment = (MainFragment) fragmentManager.findFragmentById(R.id.main_fragment_container);
+        scoreListA = (ListView) findViewById(R.id.ScoreListA);
+        scoreListB = (ListView) findViewById(R.id.ScoreListB);
+        tichuMadeA  = (CheckBox) findViewById(R.id.tichuMadeA);
+        tichuMadeB = (CheckBox) findViewById(R.id.tichuMadeB);
+        gTichuMadeA = (CheckBox) findViewById(R.id.gTichuMadeA);
+        gTichuMadeB = (CheckBox) findViewById(R.id.gTichuMadeB);
+        tichuLostA = (CheckBox) findViewById(R.id.tichuLostA);
+        gTichuLostA = (CheckBox) findViewById(R.id.gTichuLostA);
+        tichuLostB = (CheckBox) findViewById(R.id.tichuLostB);
+        gTichuLostB = (CheckBox) findViewById(R.id.gTichuLostB);
+        oneTwoA = (CheckBox) findViewById(R.id.oneTwoA);
+        oneTwoB = (CheckBox) findViewById(R.id.oneTwoB);
+        scoreA = (EditText) findViewById(R.id.scoreAEditText);
+        scoreB = (EditText) findViewById(R.id.scoreBEditText);
+        smallGame = (RadioButton) findViewById(R.id.smallGame);
+        normalGame = (RadioButton) findViewById(R.id.normalGame);
+        totalScoreA = (TextView) findViewById(R.id.totalScoreA);
+        totalScoreB = (TextView) findViewById(R.id.totalScoreB);
+        nameTeamA = (TextView) findViewById(R.id.TextViewTeamA);
+        nameTeamB = (TextView) findViewById(R.id.TextViewTeamB);
+        teamAEditText = (EditText) findViewById(R.id.editTextTeamA);
+        teamBEditText = (EditText) findViewById(R.id.editTextTeamB);
+        resetNameButton = (ImageButton) findViewById(R.id.resetNamesButton);
+        saveNamesButton = (ImageButton) findViewById(R.id.saveNameButton);
+
+        nameTeamA.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                nameTeamA.setVisibility(View.INVISIBLE);
+                teamAEditText.setVisibility(View.VISIBLE);
+                resetNameButton.setVisibility(View.INVISIBLE);
+                saveNamesButton.setVisibility(View.VISIBLE);
+                return true;
+            }
+        });
+        nameTeamB.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                nameTeamB.setVisibility(View.INVISIBLE);
+                teamBEditText.setVisibility(View.VISIBLE);
+                resetNameButton.setVisibility(View.INVISIBLE);
+                saveNamesButton.setVisibility(View.VISIBLE);
+                return true;
+            }
+        });
 
         //FragmentTransaction allow us to call methods for fragments.
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -82,17 +129,16 @@ public class MainActivity extends AppCompatActivity {
         //Init our two fragments. The PlayFragment which contains the Checkboxes etc.
         //And the MainFragment that it's for the main screen of the app.
 
-
         //OnCreate we want to show the MainFragment and hide the PlayFragment.
-        fragmentTransaction.show(_mainFragment);
-        fragmentTransaction.hide(_playFragment);
+        fragmentTransaction.show(mainFragment);
+        fragmentTransaction.hide(playFragment);
 
         //Committing our changes.
         fragmentTransaction.commit();
 
-
         adapterA = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, scoreTeamA);
         adapterB = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, scoreTeamB);
+
 
         scoreListA.setAdapter(adapterA);
         scoreListB.setAdapter(adapterB);
@@ -110,8 +156,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //OnCreate we want to show the MainFragment and hide the PlayFragment.
-        fragmentTransaction.show(_mainFragment);
-        fragmentTransaction.hide(_playFragment);
+        fragmentTransaction.show(mainFragment);
+        fragmentTransaction.hide(playFragment);
 
         //Committing our changes.
         fragmentTransaction.commit();
@@ -213,47 +259,49 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void teamACalculation(){
+        if(tichuLostB.isChecked())
+            tempB -= 100;
+        else if (gTichuLostB.isChecked())
+            tempB -= 200;
+        if (tichuMadeA.isChecked())
+            tempA += 100;
+        else if (tichuLostA.isChecked())
+            tempA -= 100;
+        else if (gTichuMadeA.isChecked())
+            tempA += 200;
+        else if (gTichuLostA.isChecked())
+            tempA -= 200;
+    }
+
+    private void teamBCalculation(){
+        if (tichuLostA.isChecked())
+            tempA -= 100;
+        else if(gTichuLostA.isChecked())
+            tempA -= 200;
+        if (tichuMadeB.isChecked())
+            tempB += 100;
+        else if (tichuLostB.isChecked())
+            tempB -= 100;
+        else if (gTichuMadeB.isChecked())
+            tempB += 200;
+        else if (gTichuLostB.isChecked())
+            tempB -= 200;
+    }
+
     public void playButtonClick(View view) {
 
         if (scoreA.getText().toString().isEmpty() && scoreB.getText().toString().isEmpty()) {
             if (oneTwoA.isChecked() && !oneTwoB.isChecked()) {
                 tempA = 200;
-                if (tichuMadeA.isChecked()) {
-                    tempA += 100;
-                    if (tichuLostB.isChecked())
-                        tempB = -100;
-                    else if (gTichuLostB.isChecked())
-                        tempB = -200;
-                } else if (tichuLostA.isChecked())
-                    tempA -= 100;
-                else if (gTichuMadeA.isChecked()) {
-                    tempA += 200;
-                    if (tichuLostB.isChecked())
-                        tempB = -100;
-                    else if (gTichuLostB.isChecked())
-                        tempB = -200;
-                } else if (gTichuLostA.isChecked())
-                    tempA -= 200;
+                tempB = 0;
+                teamACalculation();
                 scoreTeamA.add(0, tempA);
                 scoreTeamB.add(0, tempB);
             } else if (!oneTwoA.isChecked() && oneTwoB.isChecked()) {
                 tempB = 200;
-                if (tichuMadeB.isChecked()) {
-                    tempB += 100;
-                    if (tichuLostA.isChecked())
-                        tempA = -100;
-                    else if (gTichuLostA.isChecked())
-                        tempA = -200;
-                } else if (tichuLostB.isChecked())
-                    tempB -= 100;
-                else if (gTichuMadeB.isChecked()) {
-                    tempB += 200;
-                    if (tichuLostA.isChecked())
-                        tempA = -100;
-                    else if (gTichuLostA.isChecked())
-                        tempA = -200;
-                } else if (gTichuLostB.isChecked())
-                    tempB -= 200;
+                tempA = 0;
+                teamBCalculation();
                 scoreTeamA.add(0, tempA);
                 scoreTeamB.add(0, tempB);
             }
@@ -336,7 +384,6 @@ public class MainActivity extends AppCompatActivity {
                     else if (gTichuLostA.isChecked())
                         tempA -= 200;
                 }
-
                 scoreTeamA.add(0, tempA);
                 scoreTeamB.add(0, tempB);
             }
@@ -540,43 +587,43 @@ public class MainActivity extends AppCompatActivity {
     public void changeTeamANameButton(View view) {
         /*Change the visibility of the components to be right*/
         nameTeamA.setVisibility(View.INVISIBLE);
-        _teamAEditText.setVisibility(View.VISIBLE);
-        _resetNameButton.setVisibility(View.INVISIBLE);
-        _saveNamesButton.setVisibility(View.VISIBLE);
+        teamAEditText.setVisibility(View.VISIBLE);
+        resetNameButton.setVisibility(View.INVISIBLE);
+        saveNamesButton.setVisibility(View.VISIBLE);
     }
 
     public void changeTeamBNameButton(View view) {
         nameTeamB.setVisibility(View.INVISIBLE);
-        _teamBEditText.setVisibility(View.VISIBLE);
-        _resetNameButton.setVisibility(View.INVISIBLE);
-        _saveNamesButton.setVisibility(View.VISIBLE);
+        teamBEditText.setVisibility(View.VISIBLE);
+        resetNameButton.setVisibility(View.INVISIBLE);
+        saveNamesButton.setVisibility(View.VISIBLE);
     }
 
     public void saveNamesButtonClick(View view) {
         //set the visibility to be visible
         nameTeamA.setVisibility(View.VISIBLE);
-        _teamAEditText.setVisibility(View.INVISIBLE);
+        teamAEditText.setVisibility(View.INVISIBLE);
         nameTeamB.setVisibility(View.VISIBLE);
-        _teamBEditText.setVisibility(View.INVISIBLE);
+        teamBEditText.setVisibility(View.INVISIBLE);
 
         //Change the TeamATextView text with whatever the teamAEditText contains
-        //_teamATextView.setText(_teamAEditText.getText());
-        //_teamBTextView.setText(_teamBEditText.getText());
+        //_teamATextView.setText(teamAEditText.getText());
+        //_teamBTextView.setText(teamBEditText.getText());
 
-        if (_teamAEditText.getText().toString().isEmpty()) {
+        if (teamAEditText.getText().toString().isEmpty()) {
             nameTeamA.setText("Team A");
-        } else
-            nameTeamA.setText(_teamAEditText.getText());
-
-        if (_teamBEditText.getText().toString().isEmpty()) {
+        } else {
+            nameTeamA.setText(teamAEditText.getText());
+        }
+        if (teamBEditText.getText().toString().isEmpty()) {
             nameTeamB.setText("Team B");
         } else {
-            nameTeamB.setText(_teamBEditText.getText());
+            nameTeamB.setText(teamBEditText.getText());
         }
 
         //And then make the buttons invisible and visible
-        _resetNameButton.setVisibility(View.VISIBLE);
-        _saveNamesButton.setVisibility(View.INVISIBLE);
+        resetNameButton.setVisibility(View.VISIBLE);
+        saveNamesButton.setVisibility(View.INVISIBLE);
     }
 
     public void resetNamesButton(View view) {
@@ -587,11 +634,11 @@ public class MainActivity extends AppCompatActivity {
         builder.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                TextView _teamATextView = (TextView) findViewById(R.id.TextViewTeamA);
-                TextView _teamBTextView = (TextView) findViewById(R.id.TextViewTeamB);
 
-                _teamATextView.setText("Team A");
-                _teamBTextView.setText("Team B");
+                nameTeamA.setText("Team A");
+                nameTeamB.setText("Team B");
+                teamAEditText.setText("");
+                teamBEditText.setText("");
                 dialog.dismiss();
             }
         });

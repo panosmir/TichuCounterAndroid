@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 
 buildscript {
@@ -8,6 +9,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "io.realm:realm-gradle-plugin:2.3.1"
     }
 }
 
